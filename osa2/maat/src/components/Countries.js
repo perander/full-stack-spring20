@@ -2,6 +2,9 @@ import React from 'react'
 import Country from './Country'
 
 const Countries = (props) => {
+    const show = props.countriesToShow
+    //console.log("show", show);
+    
 
     if (props.countriesToShow.length > 10) {
         return <>
@@ -10,19 +13,20 @@ const Countries = (props) => {
     }
 
     else if (props.countriesToShow.length === 1) {
-        //console.log("löyty");
-        
         return <>
             <Country key={props.countriesToShow[0].name} country={props.countriesToShow[0]} />
         </>
     }
 
+    console.log(props.countriesToShow);
+    
     return <>
+    
         <ul>
             {props.countriesToShow.map((country) =>
             <>
                 <li key={country.name}>{country.name}
-                    <button onClick={props.showCountry}>show</button>
+                    <button onClick={() => props.showCountry(country)}>show</button>
                 </li>
                 </>
             )}
